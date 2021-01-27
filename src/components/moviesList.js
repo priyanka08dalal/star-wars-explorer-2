@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import MainItems from './MainItems'
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { fetchPeople } from '../actions/peopleActions';
+import { fetchMovies } from '../actions/moviesAction';
 import { useEffect } from 'react'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -30,25 +30,25 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-function PeopleList( ) {
+function MovieList( ) {
   // function getPeopleDetails() {
     // const history = useHistory();
     // history.push('/persondetails')
   // }
-  console.log("peopleList")
+  console.log("moviesList")
   const dispatch = useDispatch();
-  const people = useSelector(state => state.peopleReducer.people)
-  console.log(people)
+  const movies = useSelector(state => state.peopleReducer.movies)
+  console.log(movies)
   useEffect(() => {
-    dispatch(fetchPeople());
+    dispatch(fetchMovies());
   },[] )
 
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <MainItems text={"People"} />
-      {people.length>0 && people.map ((p,i) => {
+      <MainItems text={"Movies"} />
+      {movies.length>0 && movies.map ((m,i) => {
         return(<List className={classes.root} key = {i}>
           <ListItem>
             <ListItemAvatar>
@@ -56,7 +56,7 @@ function PeopleList( ) {
                 <ImageIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={p.name} />
+            <ListItemText primary={m.name} />
           </ListItem>
         </List>)
       })}
@@ -64,20 +64,6 @@ function PeopleList( ) {
   );
 }
 
-
-// const mapStateToProps = state => {
-//   return {
-//     peopleData: state.people
-//   }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchPeople: () => dispatch(fetchPeople())
-//   }
-// }
-
 export default connect(
-  // mapStateToProps,
-  // mapDispatchToProps
-)(PeopleList)
+
+)(MovieList)

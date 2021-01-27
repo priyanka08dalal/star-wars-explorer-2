@@ -21,7 +21,7 @@ const peopleReducer = (state = initialState, action) => {
     case FETCH_PEOPLE_SUCCESS:
       return {
         loading: false,
-        people: action.payload,
+        people: action.payload.results,
         error: ''
       }
     case FETCH_PEOPLE_FAILURE:
