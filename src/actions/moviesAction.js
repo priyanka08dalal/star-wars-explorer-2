@@ -10,7 +10,7 @@ export const fetchMovies = () => {
   return (dispatch) => {
     dispatch(fetchMoviesRequest())
     axios
-      .get('https://swapi.dev/api/movies')
+      .get('https://swapi.dev/api/films')
       .then(response => {
         // response.data is the users
         const Movies = response.data
@@ -30,10 +30,10 @@ export const fetchMoviesRequest = () => {
   }
 }
 
-export const fetchMoviessSuccess = People => {
+export const fetchMoviessSuccess = Movies => {
   return {
     type: FETCH_MOVIES_SUCCESS,
-    payload: People
+    payload: Movies
   }
 }
 

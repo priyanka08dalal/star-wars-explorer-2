@@ -4,6 +4,7 @@ import PeopleList from './components/peopleList'
 import ItemsButton from './components/ItemsButton'
 import PersonDetails from './components/personDetails'
 import MoviesList from './components/moviesList'
+import MoviesDetails from './components/moviesDetails'
 // import { createBrowserHistory } from 'history'; 
 
 class Routes extends Component {
@@ -14,7 +15,8 @@ class Routes extends Component {
                     <Route path="/" exact component={ItemsButton} />
                     <Route path="/people" exact component={PeopleList} />
                     <Route path="/persondetails" exact component={PersonDetails} />
-                    <Route path="/movies" exact component={MoviesList} />
+                    <Route path="/films" exact component={MoviesList} />
+                    <Route path="/filmsdetails" exact component={MoviesDetails} />
                 </Switch>
             </Router>
         );

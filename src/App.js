@@ -6,6 +6,7 @@ import {  Switch, Route } from "react-router-dom";
 import PeopleList from './components/peopleList'
 import PersonDetails from './components/personDetails'
 import MoviesList from './components/moviesList'
+import MoviesDetails from './components/moviesDetails'
 // import ItemsButton from './components/ItemsButton'
 
 class App extends Component {
@@ -16,7 +17,8 @@ class App extends Component {
                     <Route path="/" exact component={ItemsButton} />
                     <Route path="/people" exact component={PeopleList} />
                     <Route path="/persondetails" exact component={PersonDetails} />
-                    <Route path="/movies" exact component={MoviesList} />
+                    <Route path="/films" exact component={MoviesList} />
+                    <Route path="/filmsdeails" exact component={MoviesDetails} />
                 </Switch>
                 {/* <Header /> */}
                 {/* <ItemsButton /> */}

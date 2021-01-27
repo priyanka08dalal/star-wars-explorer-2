@@ -31,13 +31,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MovieList( ) {
-  // function getPeopleDetails() {
-    // const history = useHistory();
-    // history.push('/persondetails')
-  // }
   console.log("moviesList")
   const dispatch = useDispatch();
-  const movies = useSelector(state => state.peopleReducer.movies)
+  const movies = useSelector(state => state.moviesReducer.movies)
   console.log(movies)
   useEffect(() => {
     dispatch(fetchMovies());
@@ -56,7 +52,7 @@ function MovieList( ) {
                 <ImageIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={m.name} />
+            <ListItemText primary={m.title} />
           </ListItem>
         </List>)
       })}

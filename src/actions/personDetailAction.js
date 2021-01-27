@@ -11,6 +11,7 @@ export const fetchPersonDetails = () => {
   return (dispatch) => {
     dispatch(fetchPersonDetailsRequest())
     axios
+    
       .get('https://swapi.dev/api/persondetails')
       .then(response => {
         // response.data is the users

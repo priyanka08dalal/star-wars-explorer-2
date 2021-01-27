@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import {Button} from "@material-ui/core"
 import MainItems from './MainItems'
-// import { connect } from 'react-redux'
-// import { fetchPeople } from '../actions/peopleActions';
 import { createBrowserHistory } from 'history';
 import { withRouter } from 'react-router-dom'
-// import PeopleList from './peopleList'
+import { withStyles } from "@material-ui/core/styles";
 
+const styles = theme => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+  });
 class ItemsButton extends Component {
     constructor(props) {
         super(props);
@@ -31,12 +36,13 @@ class ItemsButton extends Component {
 
     render() {
         // const classes = useStyles();
+        const { classes } = this.props;
 
         return (
-            <div>
+            <div className={classes.root}>
                 <MainItems text={"Star Wars Explorer"} />
                 <div>
-                    <Button variant="contained" color="primary" onClick={this.handleClick} >
+                    <Button variant="contained" color="primary" onClick={this.handleClick}>
                         People
                     </Button>
                 </div>
@@ -73,4 +79,4 @@ class ItemsButton extends Component {
 //     mapDispatchToProps
 //   );  withRouter(ItemsButton, createBrowserHistory())
 
-export default withRouter(ItemsButton, createBrowserHistory());
+export default withStyles(styles) (withRouter(ItemsButton, createBrowserHistory()));
