@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import {Button} from "@material-ui/core"
 import MainItems from './MainItems'
-import { connect } from 'react-redux'
-import { fetchPeople } from '../actions/peopleActions';
-// import { withRouter } from 'react-router-dom'
+// import { connect } from 'react-redux'
+// import { fetchPeople } from '../actions/peopleActions';
+import { createBrowserHistory } from 'history';
+import { withRouter } from 'react-router-dom'
+// import PeopleList from './peopleList'
 
 class ItemsButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            PeopleList: true,
             name: '',
             // avtar: ''
         }
@@ -18,7 +21,10 @@ class ItemsButton extends Component {
       }
     
       handleClick() {
-          window.open("people/")
+          // window.open("/people")
+          this.props.history.push('/people')
+          this.setState({PeopleList: true})
+          console.log("Button clicked")
       }
 
       
@@ -28,10 +34,9 @@ class ItemsButton extends Component {
 
         return (
             <div>
-                
                 <MainItems text={"Star Wars Explorer"} />
                 <div>
-                    <Button variant="contained" color="primary" onClick={this.handleClick}>
+                    <Button variant="contained" color="primary" onClick={this.handleClick} >
                         People
                     </Button>
                 </div>
@@ -51,19 +56,21 @@ class ItemsButton extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-      peopleData: state.people
-    }
-  }
+// const mapStateToProps = state => {
+//     return {
+//       peopleData: state.people
+//     }
+//   }
   
-  const mapDispatchToProps = dispatch => {
-    return {
-      fetchPeople: () => dispatch(fetchPeople())
-    }
-  }
+//   const mapDispatchToProps = dispatch => {
+//     return {
+//       fetchPeople: () => dispatch(fetchPeople())
+//     }
+//   }
   
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ItemsButton)
+//   export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+//   );  withRouter(ItemsButton, createBrowserHistory())
+
+export default withRouter(ItemsButton, createBrowserHistory());

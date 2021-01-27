@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // import Avatar from '@material-ui/core/Avatar';
-import MainItems from './MainItems'
+// import MainItems from './MainItems'
 import { connect } from 'react-redux'
 import { fetchPeople } from '../actions/peopleActions';
 import { useEffect } from 'react'
@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-function PeopleList({ people, fetchPeople }) {
+function PeopleList( people, fetchPeople ) {
+  console.log("peopleList")
   useEffect(() => {
     fetchPeople()
   }, [fetchPeople])
@@ -27,9 +28,10 @@ function PeopleList({ people, fetchPeople }) {
 
   return (
     <div className={classes.root}>
-        <MainItems text={"People"} />
-        {/* <Avatar src="/broken-image.jpg" /> */}
-        <h2>{people.name}</h2>
+      test
+        {/* <MainItems text={"People"} />
+        <Avatar src="/broken-image.jpg" />
+        <h2>{people.name}</h2> */}
     </div>
   );
 }
