@@ -6,6 +6,7 @@ import moviesReducer from './moviesReducer'
 import moviesDetailsReducer from './moviesDetailsReducer'
 import personDetailsReducer from './personDetailsReducer'
 import planetsReducer from './planetReducer'
+import planetsDetailsReducer from './planetDetailsReducer'
 // import searchReducer from './searchReducer';
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     moviesDetailsReducer: moviesDetailsReducer,
     personDetailsReducer: personDetailsReducer,
     planetsReducer:planetsReducer,
+    planetsDetailsReducer: planetsDetailsReducer,
 //   searchState: searchReducer,
 });
 

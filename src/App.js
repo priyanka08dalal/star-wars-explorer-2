@@ -8,6 +8,7 @@ import PersonDetails from './components/personDetails'
 import MoviesList from './components/moviesList'
 import MoviesDetails from './components/moviesDetails'
 import PlanetsList from './components/planetsList'
+import planetsDetails from './components/planetsDetails'
 // import ItemsButton from './components/ItemsButton'
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
                     <Route path="/films" exact component={MoviesList} />
                     <Route path="/filmsdetails" exact component={MoviesDetails} />
                     <Route path="/planets" exact component={PlanetsList} />
+                    <Route path="/planetsdetails" exact component={planetsDetails} />
                 </Switch>
                 {/* <Header /> */}
                 {/* <ItemsButton /> */}

@@ -58,7 +58,7 @@ function PlanetsList( ) {
           
           <Typography >
       
-          <Link to='/planets'>
+          <Link to='/planetsdetails'>
          {p.name}
       </Link>
       </Typography>

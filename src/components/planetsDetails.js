@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MainItems from './MainItems'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { fetchMoviesDetails } from '../actions/moviesDetailsAction';
+import { fetchPlanetDetails } from '../actions/planetDetailsAction';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
@@ -20,21 +20,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function MoviesDetails(props) {
+export default function PlanetsDetails(props) {
   
-  console.log("In movies details")
+  console.log("In planetDetails ")
   const dispatch = useDispatch();
-  const moviesDetails = useSelector(state => state.moviesDetailsReducer.moviesDetails);
-  const loading = useSelector(state => state.moviesDetailsReducer.loading);
+  const planetDetails = useSelector(state => state.planetsDetailsReducer.planetDetails);
+  const loading = useSelector(state => state.planetsDetailsReducer.loading);
   
   //DISPATCHING ACTION FOR GETTING Movies DETAILS FROM THE ID
   useEffect(() => {
-    dispatch(fetchMoviesDetails());
+    dispatch(fetchPlanetDetails());
   }, [] );
 
   useEffect(() => {
-    console.log("In JS file: ", moviesDetails)
-  },[moviesDetails])
+    console.log("In JS file: ", planetDetails)
+  },[planetDetails])
   const classes = useStyles();
   if (loading) {
     console.log("if")
@@ -53,11 +53,10 @@ export default function MoviesDetails(props) {
   console.log("else")
   return(
   <div className={classes.root}>
-    <MainItems text={"Movies"} />
-    <TextField disabled id="standard-disabled" label="Height" defaultValue={moviesDetails.title}  />
-    <TextField disabled id="standard-disabled" label="Mass" defaultValue={moviesDetails.director} />
-    <TextField disabled id="standard-disabled" label="Hair Color" defaultValue={moviesDetails.producers} />
-    <TextField disabled id="standard-disabled" label="Relese Date" defaultValue={moviesDetails.release_date} />
+    <MainItems text={"Planets"} />
+    <TextField disabled id="standard-disabled" label="Title" defaultValue={planetDetails.name}  />
+    <TextField disabled id="standard-disabled" label="Terrain" defaultValue={planetDetails.terrain} />
+    <TextField disabled id="standard-disabled" label="Population" defaultValue={planetDetails.population} />
   </div>)
 }
 
