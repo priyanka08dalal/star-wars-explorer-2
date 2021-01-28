@@ -1,46 +1,45 @@
-import axios from 'axios'
+import axios from "axios";
 // import PersonDetails from '../components/personDetails'
 import {
   FETCH_PERSONDETAILS_REQUEST,
   FETCH_PERSONDETAILS_SUCCESS,
-  FETCH_PERSONDETAILS_FAILURE
-} from './actionType'
+  FETCH_PERSONDETAILS_FAILURE,
+} from "./actionType";
 
 export const fetchPersonDetails = () => {
- 
   return (dispatch) => {
-    dispatch(fetchPersonDetailsRequest())
+    dispatch(fetchPersonDetailsRequest());
     axios
-    
-      .get('https://swapi.dev/api/people/1')
-      .then(response => {
+
+      .get("https://swapi.dev/api/people/1")
+      .then((response) => {
         // response.data is the users
-        const PersonDetails = response.data
-        dispatch(fetchPersonDetailssSuccess(PersonDetails))
+        const PersonDetails = response.data;
+        dispatch(fetchPersonDetailssSuccess(PersonDetails));
       })
-      .catch(error => {
+      .catch((error) => {
         // error.message is the error message
-        dispatch(fetchPersonDetailsFailure(error.message))
-      })
-  }
-}
+        dispatch(fetchPersonDetailsFailure(error.message));
+      });
+  };
+};
 
 export const fetchPersonDetailsRequest = () => {
   return {
-    type: FETCH_PERSONDETAILS_REQUEST
-  }
-}
+    type: FETCH_PERSONDETAILS_REQUEST,
+  };
+};
 
-export const fetchPersonDetailssSuccess = PersonDetails => {
+export const fetchPersonDetailssSuccess = (PersonDetails) => {
   return {
     type: FETCH_PERSONDETAILS_SUCCESS,
-    payload: PersonDetails
-  }
-}
+    payload: PersonDetails,
+  };
+};
 
-export const fetchPersonDetailsFailure = error => {
+export const fetchPersonDetailsFailure = (error) => {
   return {
     type: FETCH_PERSONDETAILS_FAILURE,
-    payload: error
-  }
-}
+    payload: error,
+  };
+};

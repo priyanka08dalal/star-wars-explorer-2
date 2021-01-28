@@ -50,7 +50,7 @@ function MoviesList() {
                   </Avatar>
                 </ListItemAvatar>
                 <Typography>
-                  <Link to="/films">{p.title}</Link>
+                  <Link to="/filmsdetails">{p.title}</Link>
                 </Typography>
               </ListItem>
             </List>

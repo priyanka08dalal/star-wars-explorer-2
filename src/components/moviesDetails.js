@@ -22,8 +22,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MoviesDetails(props) {
   
+  console.log("In movies details")
   const dispatch = useDispatch();
-  const MoviesDetails = useSelector(state => state.moviesDetailsReducer.MoviesDetails);
+  const moviesDetails = useSelector(state => state.moviesDetailsReducer.moviesDetails);
   const loading = useSelector(state => state.moviesDetailsReducer.loading);
   
   //DISPATCHING ACTION FOR GETTING Movies DETAILS FROM THE ID
@@ -32,8 +33,8 @@ export default function MoviesDetails(props) {
   }, [] );
 
   useEffect(() => {
-    console.log("In JS file: ", MoviesDetails)
-  },[MoviesDetails])
+    console.log("In JS file: ", moviesDetails)
+  },[moviesDetails])
   const classes = useStyles();
   if (loading) {
     console.log("if")
@@ -53,9 +54,9 @@ export default function MoviesDetails(props) {
   return(
   <div className={classes.root}>
     <MainItems text={"Movies"} />
-    <TextField disabled id="standard-disabled" label="Height" defaultValue={MoviesDetails.title}  />
-    <TextField disabled id="standard-disabled" label="Mass" defaultValue={MoviesDetails.director} />
-    <TextField disabled id="standard-disabled" label="Hair Color" defaultValue={MoviesDetails.producers} />
+    <TextField disabled id="standard-disabled" label="Height" defaultValue={moviesDetails.title}  />
+    <TextField disabled id="standard-disabled" label="Mass" defaultValue={moviesDetails.director} />
+    <TextField disabled id="standard-disabled" label="Hair Color" defaultValue={moviesDetails.producers} />
   </div>)
 }
 

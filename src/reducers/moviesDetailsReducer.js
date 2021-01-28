@@ -11,7 +11,6 @@ import {
   }
   
   const moviesDetailsReducer = (state = initialState, action) => {
-    console.log("Reducers")
     switch (action.type) {
       case FETCH_MOVIESDETAILS_REQUEST:
         return {
