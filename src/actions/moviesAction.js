@@ -15,7 +15,7 @@ export const fetchMovies = () => {
         // response.data is the users
         const Movies = response.data
         dispatch(fetchMoviessSuccess(Movies))
-        console.log(Movies)
+        console.log("Movies from action", Movies)
       })
       .catch(error => {
         // error.message is the error message

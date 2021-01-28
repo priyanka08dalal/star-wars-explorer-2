@@ -17,12 +17,17 @@ class ItemsButton extends Component {
         super(props);
         this.state = {
             PeopleList: true,
+            MoviesList: true,
+            PlanetsList: true,
             name: '',
+            title: ''
             // avtar: ''
         }
     
         // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
+        this.handleClickMovies = this.handleClickMovies.bind(this);
+        this.handleClickPlanets = this.handleClickPlanets.bind(this);
       }
     
       handleClick() {
@@ -31,6 +36,21 @@ class ItemsButton extends Component {
           this.setState({PeopleList: true})
           console.log("Button clicked")
       }
+
+      handleClickMovies() {
+        // window.open("/people")
+        this.props.history.push('/films')
+        this.setState({MoviesList: true})
+        console.log("Button clicked")
+    }
+
+    handleClickPlanets() {
+        // window.open("/people")
+        this.props.history.push('/planets')
+        this.setState({PlanetsList: true})
+        console.log("Button clicked")
+    }
+
 
       
 
@@ -47,12 +67,12 @@ class ItemsButton extends Component {
                     </Button>
                 </div>
                 <div>
-                    <Button variant="contained" size="medium" color="primary">
+                    <Button variant="contained" size="medium" color="primary" onClick={this.handleClickMovies}>
                         Movies
                     </Button>
                 </div>
                 <div>
-                     <Button variant="contained" color="primary">
+                     <Button variant="contained" color="primary" onClick={this.handleClickPlanets}>
                          Planet
                     </Button>
                 </div>

@@ -33,8 +33,8 @@ function PlanetsList( ) {
 
   console.log("planetsList")
   const dispatch = useDispatch();
-  const planet = useSelector(state => state.peopleReducer.planet)
-  console.log(planet)
+  const planet = useSelector(state => state.planetsReducer.planet)
+  console.log("Planet---->",planet)
   useEffect(() => {
     dispatch(fetchPlanet());
   },[] )
@@ -44,8 +44,8 @@ function PlanetsList( ) {
 
   return (
     <div className={classes.root}>
-      <MainItems text={"planet"} />
-      {planet.length>0 && planet.map ((p,i) => {
+      <MainItems text={"Planets"} />
+      {planet&&planet.length > 0 && planet.map ((p,i) => {
         return(<List className={classes.root} key = {i}>
           <ListItem>
             <ListItemAvatar>
@@ -58,7 +58,7 @@ function PlanetsList( ) {
           
           <Typography >
       
-          <Link to='/persondetails'>
+          <Link to='/planets'>
          {p.name}
       </Link>
       </Typography>

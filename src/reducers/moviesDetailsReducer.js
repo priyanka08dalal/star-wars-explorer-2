@@ -16,12 +16,13 @@ import {
       case FETCH_MOVIESDETAILS_REQUEST:
         return {
           ...state,
-          loading: true
+          loading: true,
+          moviesDetails:null
         }
       case FETCH_MOVIESDETAILS_SUCCESS:
         return {
           loading: false,
-          moviesDetails: action.payload.results,
+          moviesDetails: action.payload,
           error: ''
         }
       case FETCH_MOVIESDETAILS_FAILURE:

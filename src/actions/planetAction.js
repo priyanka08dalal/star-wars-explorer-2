@@ -10,7 +10,7 @@ export const fetchPlanet = () => {
   return (dispatch) => {
     dispatch(fetchPlanetRequest())
     axios
-      .get('https://swapi.dev/api/planet')
+      .get('https://swapi.dev/api/planets')
       .then(response => {
         // response.data is the users
         const Planet = response.data
@@ -30,10 +30,10 @@ export const fetchPlanetRequest = () => {
   }
 }
 
-export const fetchPlanetsSuccess = People => {
+export const fetchPlanetsSuccess = Planet => {
   return {
     type: FETCH_PLANET_SUCCESS,
-    payload: People
+    payload: Planet
   }
 }
 

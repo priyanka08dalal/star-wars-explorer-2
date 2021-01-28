@@ -20,7 +20,7 @@ class App extends Component {
                     <Route path="/persondetails" exact component={PersonDetails} />
                     <Route path="/films" exact component={MoviesList} />
                     <Route path="/filmsdeails" exact component={MoviesDetails} />
-                    {/* <Route path="/planets" exact component={PlanetsList} /> */}
+                    <Route path="/planets" exact component={PlanetsList} />
                 </Switch>
                 {/* <Header /> */}
                 {/* <ItemsButton /> */}
