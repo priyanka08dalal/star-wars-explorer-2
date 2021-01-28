@@ -1,4 +1,4 @@
-import React from 'react';
+// import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import MainItems from './MainItems'
@@ -7,13 +7,11 @@ import { fetchPeople } from '../actions/peopleActions';
 import { useEffect } from 'react'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+// import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ImageIcon from '@material-ui/icons/Image';
-// import { useHistory } from "react-router-dom";
-// import { createBrowserHistory } from 'history';
-import { withRouter } from 'react-router-dom'
-import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,10 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PeopleList( ) {
-  function getPeopleDetails() {
-    const history = useHistory();
-    history.push('/persondetails')
-  }
+
   console.log("peopleList")
   const dispatch = useDispatch();
   const people = useSelector(state => state.peopleReducer.people)
@@ -45,6 +40,7 @@ function PeopleList( ) {
   },[] )
 
   const classes = useStyles();
+  // const preventDefault = (event) => event.preventDefault();
 
   return (
     <div className={classes.root}>
@@ -57,8 +53,17 @@ function PeopleList( ) {
                 <ImageIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={p.name} onClick={getPeopleDetails} />
-          </ListItem>
+            {/* <ListItemText primary={p.name}/> */}
+            
+          
+          <Typography >
+      
+          <Link to='/persondetails'>
+         {p.name}
+      </Link>
+      </Typography>
+      </ListItem>
+    
         </List>)
       })}
     </div>
@@ -66,16 +71,6 @@ function PeopleList( ) {
 }
 
 
-// const mapStateToProps = state => {
-//   return {
-//     peopleData: state.people
-//   }
-// }
+export default connect(
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchPeople: () => dispatch(fetchPeople())
-//   }
-// }
-
-export default connect() (withRouter(PeopleList));
+) (PeopleList);
