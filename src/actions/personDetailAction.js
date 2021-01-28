@@ -1,5 +1,4 @@
 import axios from "axios";
-// import PersonDetails from '../components/personDetails'
 import {
   FETCH_PERSONDETAILS_REQUEST,
   FETCH_PERSONDETAILS_SUCCESS,
@@ -11,7 +10,7 @@ export const fetchPersonDetails = () => {
     dispatch(fetchPersonDetailsRequest());
     axios
 
-      .get("https://swapi.dev/api/people/1")
+      .get("https://swapi.dev/api/people/1") // Use axios to get data deom API
       .then((response) => {
         // response.data is the users
         const PersonDetails = response.data;

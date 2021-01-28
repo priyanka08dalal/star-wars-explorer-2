@@ -27,16 +27,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PeopleList() {
-  console.log("peopleList");
+  //DISPATCHING ACTION FOR GETTING PEOPLE DETAILS FROM THE ID
   const dispatch = useDispatch();
   const people = useSelector((state) => state.peopleReducer.people);
-  console.log(people);
+
   useEffect(() => {
     dispatch(fetchPeople());
   }, []);
 
   const classes = useStyles();
-  // const preventDefault = (event) => event.preventDefault();
 
   return (
     <div className={classes.root}>
@@ -51,7 +50,6 @@ function PeopleList() {
                     <ImageIcon />
                   </Avatar>
                 </ListItemAvatar>
-                {/* <ListItemText primary={p.name}/> */}
 
                 <Typography>
                   <Link to="/persondetails">{p.name}</Link>

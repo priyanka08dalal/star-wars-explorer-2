@@ -1,5 +1,4 @@
 import axios from "axios";
-// import PersonDetails from '../components/personDetails'
 import {
   FETCH_MOVIESDETAILS_REQUEST,
   FETCH_MOVIESDETAILS_SUCCESS,
@@ -7,17 +6,15 @@ import {
 } from "./actionType";
 
 export const fetchMoviesDetails = () => {
-  console.log("In movies action");
   return (dispatch) => {
     dispatch(fetchMoviesDetailsRequest());
     axios
 
-      .get("https://swapi.dev/api/films/1")
+      .get("https://swapi.dev/api/films/1") //Use axios to get data from api
       .then((response) => {
-        // response.data is the users
+        // response.data is the movie details
         const MoviesDetails = response.data;
         dispatch(fetchMoviesDetailssSuccess(MoviesDetails));
-        console.log(MoviesDetails);
       })
       .catch((error) => {
         // error.message is the error message

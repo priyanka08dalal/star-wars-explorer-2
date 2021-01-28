@@ -26,20 +26,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MoviesList() {
-  console.log("Movies");
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.moviesReducer.movies);
+
+  //DISPATCHING ACTION FOR GETTING Movies DETAILS FROM THE ID
   useEffect(() => {
     dispatch(fetchMovies());
   }, []);
 
   const classes = useStyles();
-  // const preventDefault = (event) => event.preventDefault();
 
   return (
     <div className={classes.root}>
       <MainItems text={"Movies"} />
-      {movies && movies.length > 0 &&
+      {movies &&
+        movies.length > 0 &&
         movies.map((p, i) => {
           return (
             <List className={classes.root} key={i}>
