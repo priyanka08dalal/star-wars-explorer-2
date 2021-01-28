@@ -15,7 +15,7 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 360,
+    // maxWidth: 360,
     direction: "row",
     padding: 0,
     display: "inline-block",

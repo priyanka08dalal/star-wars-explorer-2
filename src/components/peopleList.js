@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // display: 'flex',
     width: "100%",
-    maxWidth: 360,
+    // maxWidth: 360,
     direction: "row",
     padding: 0,
     display: "inline-block",
