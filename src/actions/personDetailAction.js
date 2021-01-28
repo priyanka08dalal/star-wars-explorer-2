@@ -7,17 +7,16 @@ import {
 } from './actionType'
 
 export const fetchPersonDetails = () => {
-  console.log("Actions")
+ 
   return (dispatch) => {
     dispatch(fetchPersonDetailsRequest())
     axios
     
-      .get('https://swapi.dev/api/persondetails')
+      .get('https://swapi.dev/api/people/1')
       .then(response => {
         // response.data is the users
         const PersonDetails = response.data
         dispatch(fetchPersonDetailssSuccess(PersonDetails))
-        console.log(PersonDetails)
       })
       .catch(error => {
         // error.message is the error message

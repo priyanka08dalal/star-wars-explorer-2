@@ -11,17 +11,18 @@ import {
   }
   
   const personDetailsReducer = (state = initialState, action) => {
-    console.log("Reducers")
+   
     switch (action.type) {
       case FETCH_PERSONDETAILS_REQUEST:
         return {
           ...state,
-          loading: true
+          loading: true,
+          personDetails:null
         }
       case FETCH_PERSONDETAILS_SUCCESS:
-        return {
+               return {
           loading: false,
-          personDetails: action.payload.results,
+          personDetails: action.payload,
           error: ''
         }
       case FETCH_PERSONDETAILS_FAILURE:
