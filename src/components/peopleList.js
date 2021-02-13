@@ -7,9 +7,15 @@ import { useEffect } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import ImageIcon from "@material-ui/icons/Image";
-import { Link } from "react-router-dom";
+import Link from '@material-ui/core/Link'
 import Typography from "@material-ui/core/Typography";
+import React from "react";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import Divider from "@material-ui/core/Divider";
+import ListItemText from "@material-ui/core/ListItemText";
+import PersonDetails from "./personDetails";
+import { useRoutes } from "hookrouter";
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +36,10 @@ function PeopleList() {
   //DISPATCHING ACTION FOR GETTING PEOPLE DETAILS FROM THE ID
   const dispatch = useDispatch();
   const people = useSelector((state) => state.peopleReducer.people);
+  const [selectedIndex] = React.useState(1);
+  const history = useHistory();
+  const handleClick = () => history.push('/persondetails');
+  const handleClickRoute = () => history.push('/')
 
   useEffect(() => {
     dispatch(fetchPeople());
@@ -40,21 +50,38 @@ function PeopleList() {
   return (
     <div className={classes.root}>
       <MainItems text={"People"} />
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link color="inherit" href="/" onClick={handleClickRoute}>
+          Home
+        </Link>
+        <Typography color="textPrimary">People List</Typography>
+      </Breadcrumbs>
       {people.length > 0 &&
         people.map((p, i) => {
           return (
-            <List className={classes.root} key={i}>
-              <ListItem>
+            <List
+              className={classes.root}
+              key={i}
+              component="nav"
+              aria-label="main mailbox folders"
+            >
+              {/* <ListItem> */}
+              <ListItem
+                button
+                selected={selectedIndex === 1}
+                onClick={handleClick}
+              >
                 <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
+                  <Avatar src="./avatar.jpeg">{/* <ImageIcon /> */}</Avatar>
                 </ListItemAvatar>
+                <ListItemText primary={p.name} />
 
                 <Typography>
-                  <Link to="/persondetails">{p.name}</Link>
+                  {/* <Link to="/persondetails">{p.name}</Link> */}
+                  <Divider variant="inset" component="li" />
                 </Typography>
               </ListItem>
+              <Divider />
             </List>
           );
         })}

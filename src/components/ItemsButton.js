@@ -50,7 +50,7 @@ class ItemsButton extends Component {
     return (
       <div className={classes.root}>
         <MainItems text={"Star Wars Explorer"} />
-        <div>
+        <div> 
           <Button
             variant="contained"
             color="primary"
