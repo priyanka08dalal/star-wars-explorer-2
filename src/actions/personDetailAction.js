@@ -5,15 +5,17 @@ import {
   FETCH_PERSONDETAILS_FAILURE,
 } from "./actionType";
 
-export const fetchPersonDetails = () => {
+export const fetchPersonDetails = (id) => {
   return (dispatch) => {
+    console.log("ID ->", id);
     dispatch(fetchPersonDetailsRequest());
     axios
-
-      .get("https://swapi.dev/api/people/1") // Use axios to get data deom API
+      .get(`https://swapi.dev/api/people/${id}`)// Use axios to get data deom API
+    
       .then((response) => {
         // response.data is the users
         const PersonDetails = response.data;
+        console.log("People Details -> ", response)
         dispatch(fetchPersonDetailssSuccess(PersonDetails));
       })
       .catch((error) => {
@@ -32,6 +34,7 @@ export const fetchPersonDetailsRequest = () => {
 export const fetchPersonDetailssSuccess = (PersonDetails) => {
   return {
     type: FETCH_PERSONDETAILS_SUCCESS,
+
     payload: PersonDetails,
   };
 };

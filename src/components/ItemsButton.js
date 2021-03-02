@@ -4,6 +4,7 @@ import MainItems from "./MainItems";
 import { createBrowserHistory } from "history";
 import { withRouter } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import Box from '@material-ui/core/Box'
 
 const styles = (theme) => ({
   root: {
@@ -50,7 +51,10 @@ class ItemsButton extends Component {
     return (
       <div className={classes.root}>
         <MainItems text={"Star Wars Explorer"} />
+        <Box m={2} pl={2} pt={1} pb={1}>
+        
         <div> 
+        
           <Button
             variant="contained"
             color="primary"
@@ -59,6 +63,8 @@ class ItemsButton extends Component {
             People
           </Button>
         </div>
+        </Box>
+        <Box m={2} pl={2} pt={1} pb={1}>
         <div>
           <Button
             variant="contained"
@@ -69,6 +75,8 @@ class ItemsButton extends Component {
             Movies
           </Button>
         </div>
+        </Box>
+        <Box m={2} pl={2} pt={1} pb={1}>
         <div>
           <Button
             variant="contained"
@@ -78,6 +86,7 @@ class ItemsButton extends Component {
             Planet
           </Button>
         </div>
+        </Box>
       </div>
     );
   }

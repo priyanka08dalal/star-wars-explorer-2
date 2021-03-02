@@ -13,9 +13,8 @@ import React from "react";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Divider from "@material-ui/core/Divider";
 import ListItemText from "@material-ui/core/ListItemText";
-import PersonDetails from "./personDetails";
-import { useRoutes } from "hookrouter";
 import { useHistory } from 'react-router-dom';
+import Box from '@material-ui/core/Box'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
     backgroundColor: theme.palette.background.paper,
     "& > *": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(0),
+      marginTop: theme.spacing(1),
     },
   },
 }));
@@ -38,7 +38,7 @@ function PeopleList() {
   const people = useSelector((state) => state.peopleReducer.people);
   const [selectedIndex] = React.useState(1);
   const history = useHistory();
-  const handleClick = () => history.push('/persondetails');
+  const handleClick = (e, i) => history.push(`/persondetails/${i}`);
   const handleClickRoute = () => history.push('/')
 
   useEffect(() => {
@@ -50,12 +50,14 @@ function PeopleList() {
   return (
     <div className={classes.root}>
       <MainItems text={"People"} />
-      <Breadcrumbs aria-label="breadcrumb">
+      <Box m={6} pl={2} pt={1}>
+      <Breadcrumbs aria-label="breadcrumb" >
         <Link color="inherit" href="/" onClick={handleClickRoute}>
           Home
         </Link>
         <Typography color="textPrimary">People List</Typography>
       </Breadcrumbs>
+      </Box>
       {people.length > 0 &&
         people.map((p, i) => {
           return (
@@ -69,7 +71,7 @@ function PeopleList() {
               <ListItem
                 button
                 selected={selectedIndex === 1}
-                onClick={handleClick}
+                onClick={(e) => handleClick(e, i)}
               >
                 <ListItemAvatar>
                   <Avatar src="./avatar.jpeg">{/* <ImageIcon /> */}</Avatar>
@@ -82,6 +84,7 @@ function PeopleList() {
                 </Typography>
               </ListItem>
               <Divider />
+              
             </List>
           );
         })}
